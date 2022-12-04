@@ -1,0 +1,663 @@
+SELECT ENAME
+FROM EMP
+WHERE ENAME = 'BLAKE';
+
+
+
+-- PowerShell 7.2.6
+-- Copyright (c) Microsoft Corporation.
+--
+-- https://aka.ms/powershell
+-- Type 'help' to get help.
+--
+-- Loading personal and system profiles took 2154ms.
+-- SHANTANU  ~  ♥ 11:01  SQLplus / as sysdba
+--
+-- SQL*Plus: Release 11.2.0.2.0 Production on Thu Oct 13 11:01:10 2022
+--
+-- Copyright (c) 1982, 2014, Oracle.  All rights reserved.
+--
+--
+-- Connected to:
+-- Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production
+--
+-- SQL> connect shan/shan;
+-- Connected.
+-- SQL> set autotrace on;
+-- SP2-0618: Cannot find the Session Identifier.  Check PLUSTRACE role is enabled
+-- SP2-0611: Error enabling STATISTICS report
+-- SQL> SELECT ENAME
+--   2  FROM EMP
+--   3  WHERE ENAME = 'BLAKE';
+--
+-- ENAME
+-- ----------
+-- BLAKE
+--
+--
+-- Execution Plan
+-- ----------------------------------------------------------
+-- Plan hash value: 3956160932
+--
+-- --------------------------------------------------------------------------
+-- | Id  | Operation         | Name | Rows  | Bytes | Cost (%CPU)| Time     |
+-- --------------------------------------------------------------------------
+-- |   0 | SELECT STATEMENT  |      |     1 |     6 |     3   (0)| 00:00:01 |
+-- |*  1 |  TABLE ACCESS FULL| EMP  |     1 |     6 |     3   (0)| 00:00:01 |
+-- --------------------------------------------------------------------------
+--
+-- Predicate Information (identified by operation id):
+-- ---------------------------------------------------
+--
+--    1 - filter("ENAME"='BLAKE')
+
+-- SQL> CREATE INDEX EMP_ENAME ON EMP(NAME);
+-- CREATE INDEX EMP_ENAME ON EMP(NAME)
+--                               *
+-- ERROR at line 1:
+-- ORA-00904: "NAME": invalid identifier
+--
+--
+-- SQL> CREATE INDEX EMP_ENAME ON EMP(ENAME);
+--
+-- Index created.
+--
+-- SQL> SELECT ENAME
+--   2  FROM EMP
+--   3  WHERE ENAME = 'BLAKE';
+--
+-- ENAME
+-- ----------
+-- BLAKE
+--
+--
+-- Execution Plan
+-- ----------------------------------------------------------
+-- Plan hash value: 1221021741
+--
+-- ------------------------------------------------------------------------------
+-- | Id  | Operation        | Name      | Rows  | Bytes | Cost (%CPU)| Time     |
+-- ------------------------------------------------------------------------------
+-- |   0 | SELECT STATEMENT |           |     1 |     6 |     1   (0)| 00:00:01 |
+-- |*  1 |  INDEX RANGE SCAN| EMP_ENAME |     1 |     6 |     1   (0)| 00:00:01 |
+-- ------------------------------------------------------------------------------
+--
+-- Predicate Information (identified by operation id):
+-- ---------------------------------------------------
+--
+--    1 - access("ENAME"='BLAKE')
+--
+-- SQL> CREATE INDEX EMP_SAL ON EMP(SAL);
+--
+-- Index created.
+--
+-- SQL> SELECT SAL FROM EMP WHERE SAL = 2000;
+--
+-- no rows selected
+--
+--
+-- Execution Plan
+-- ----------------------------------------------------------
+-- Plan hash value: 2103511451
+--
+-- ----------------------------------------------------------------------------
+-- | Id  | Operation        | Name    | Rows  | Bytes | Cost (%CPU)| Time     |
+-- ----------------------------------------------------------------------------
+-- |   0 | SELECT STATEMENT |         |     1 |     4 |     1   (0)| 00:00:01 |
+-- |*  1 |  INDEX RANGE SCAN| EMP_SAL |     1 |     4 |     1   (0)| 00:00:01 |
+-- ----------------------------------------------------------------------------
+--
+-- Predicate Information (identified by operation id):
+-- ---------------------------------------------------
+--
+--    1 - access("SAL"=2000)
+--
+-- SQL> SELECT * FROM EMP WHERE JOB = 'CLERK';
+--
+--      EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM
+-- ---------- ---------- --------- ---------- --------- ---------- ----------
+--     DEPTNO
+-- ----------
+--       7369 SMITH      CLERK           7902 17-DEC-80        800
+--         20
+--
+--       7876 ADAMS      CLERK           7788 12-JAN-83       1100
+--         20
+--
+--       7900 JAMES      CLERK           7698 03-DEC-81        950
+--         30
+--
+--
+--      EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM
+-- ---------- ---------- --------- ---------- --------- ---------- ----------
+--     DEPTNO
+-- ----------
+--       7934 MILLER     CLERK           7782 23-JAN-82       1300
+--         10
+--
+--
+--
+-- Execution Plan
+-- ----------------------------------------------------------
+-- Plan hash value: 3956160932
+--
+-- --------------------------------------------------------------------------
+-- | Id  | Operation         | Name | Rows  | Bytes | Cost (%CPU)| Time     |
+-- --------------------------------------------------------------------------
+-- |   0 | SELECT STATEMENT  |      |     3 |   114 |     3   (0)| 00:00:01 |
+-- |*  1 |  TABLE ACCESS FULL| EMP  |     3 |   114 |     3   (0)| 00:00:01 |
+-- --------------------------------------------------------------------------
+--
+-- Predicate Information (identified by operation id):
+-- ---------------------------------------------------
+--
+--    1 - filter("JOB"='CLERK')
+--
+-- SQL> SET LINE_SIZE = 300;
+-- SP2-0268: linesize option not a valid number
+-- SQL> SET LINE_SIZE 300;
+-- SP2-0268: linesize option not a valid number
+-- SQL> SET LINESIZE 300;
+-- SQL> SELECT * FROM EMP WHERE JOB = 'CLERK';
+--
+--      EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO
+-- ---------- ---------- --------- ---------- --------- ---------- ---------- ----------
+--       7369 SMITH      CLERK           7902 17-DEC-80        800                    20
+--       7876 ADAMS      CLERK           7788 12-JAN-83       1100                    20
+--       7900 JAMES      CLERK           7698 03-DEC-81        950                    30
+--       7934 MILLER     CLERK           7782 23-JAN-82       1300                    10
+--
+--
+-- Execution Plan
+-- ----------------------------------------------------------
+-- Plan hash value: 3956160932
+--
+-- --------------------------------------------------------------------------
+-- | Id  | Operation         | Name | Rows  | Bytes | Cost (%CPU)| Time     |
+-- --------------------------------------------------------------------------
+-- |   0 | SELECT STATEMENT  |      |     3 |   114 |     3   (0)| 00:00:01 |
+-- |*  1 |  TABLE ACCESS FULL| EMP  |     3 |   114 |     3   (0)| 00:00:01 |
+-- --------------------------------------------------------------------------
+--
+-- Predicate Information (identified by operation id):
+-- ---------------------------------------------------
+--
+--    1 - filter("JOB"='CLERK')
+--
+-- SQL> CREATE INDEX EMP_JOB ON EMP(JOB);
+--
+-- Index created.
+--
+-- SQL> SELECT * FROM EMP WHERE JOB = 'CLERK';
+--
+--      EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO
+-- ---------- ---------- --------- ---------- --------- ---------- ---------- ----------
+--       7369 SMITH      CLERK           7902 17-DEC-80        800                    20
+--       7876 ADAMS      CLERK           7788 12-JAN-83       1100                    20
+--       7900 JAMES      CLERK           7698 03-DEC-81        950                    30
+--       7934 MILLER     CLERK           7782 23-JAN-82       1300                    10
+--
+--
+-- Execution Plan
+-- ----------------------------------------------------------
+-- Plan hash value: 3938969085
+--
+-- ---------------------------------------------------------------------------------------
+-- | Id  | Operation                   | Name    | Rows  | Bytes | Cost (%CPU)| Time     |
+-- ---------------------------------------------------------------------------------------
+-- |   0 | SELECT STATEMENT            |         |     3 |   114 |     2   (0)| 00:00:01 |
+-- |   1 |  TABLE ACCESS BY INDEX ROWID| EMP     |     3 |   114 |     2   (0)| 00:00:01 |
+-- |*  2 |   INDEX RANGE SCAN          | EMP_JOB |     3 |       |     1   (0)| 00:00:01 |
+-- ---------------------------------------------------------------------------------------
+--
+-- Predicate Information (identified by operation id):
+-- ---------------------------------------------------
+--
+--    2 - access("JOB"='CLERK')
+--
+-- SQL> SELECT ROWID, ROWNUM FROM DEPT;
+--
+-- ROWID                  ROWNUM
+-- ------------------ ----------
+-- AAAE5fAAEAAAAFOAAA          1
+-- AAAE5fAAEAAAAFOAAB          2
+-- AAAE5fAAEAAAAFOAAC          3
+-- AAAE5fAAEAAAAFOAAD          4
+--
+--
+-- Execution Plan
+-- ----------------------------------------------------------
+-- Plan hash value: 861380655
+--
+-- --------------------------------------------------------------------------------
+-- | Id  | Operation        | Name        | Rows  | Bytes | Cost (%CPU)| Time     |
+-- --------------------------------------------------------------------------------
+-- |   0 | SELECT STATEMENT |             |     4 |    48 |     1   (0)| 00:00:01 |
+-- |   1 |  COUNT           |             |       |       |            |          |
+-- |   2 |   INDEX FULL SCAN| SYS_C006997 |     4 |    48 |     1   (0)| 00:00:01 |
+-- --------------------------------------------------------------------------------
+--
+-- SQL> SELECT ROWID, ROWNUM, DNAME FROM DEPT;
+--
+-- ROWID                  ROWNUM DNAME
+-- ------------------ ---------- --------------
+-- AAAE5fAAEAAAAFOAAA          1 ACCOUNTING
+-- AAAE5fAAEAAAAFOAAB          2 RESEARCH
+-- AAAE5fAAEAAAAFOAAC          3 SALES
+-- AAAE5fAAEAAAAFOAAD          4 OPERATIONS
+--
+--
+-- Execution Plan
+-- ----------------------------------------------------------
+-- Plan hash value: 2651264123
+--
+-- ---------------------------------------------------------------------------
+-- | Id  | Operation          | Name | Rows  | Bytes | Cost (%CPU)| Time     |
+-- ---------------------------------------------------------------------------
+-- |   0 | SELECT STATEMENT   |      |     4 |    80 |     3   (0)| 00:00:01 |
+-- |   1 |  COUNT             |      |       |       |            |          |
+-- |   2 |   TABLE ACCESS FULL| DEPT |     4 |    80 |     3   (0)| 00:00:01 |
+-- ---------------------------------------------------------------------------
+--
+-- SQL> CREATE INDEX ENUM_EMP ON EMP(EMPNO);
+-- CREATE INDEX ENUM_EMP ON EMP(EMPNO)
+--                              *
+-- ERROR at line 1:
+-- ORA-01408: such column list already indexed
+--
+--
+-- SQL> CREATE UNIQUE INDEX DNAME_DEPT ON DEPT(DNAME);
+--
+-- Index created.
+--
+-- SQL> CREATE INDEX SALJOB_EMP ON EMP(SAL, JOB);
+--
+-- Index created.
+--
+-- SQL> -- CREATE A BITMAP INDEX ON JOB ATTRIBUTE OF EMP TABLE;
+-- SQL> CREATE BITMAP INDEX BTJOB_EMP ON EMP(JOB);
+-- CREATE BITMAP INDEX BTJOB_EMP ON EMP(JOB)
+-- *
+-- ERROR at line 1:
+-- ORA-00439: feature not enabled: Bit-mapped indexes
+--
+--
+-- SQL> CREATE BITMAP INDEX BTDNUM_EMP ON EMP(DEPTNO);
+-- CREATE BITMAP INDEX BTDNUM_EMP ON EMP(DEPTNO)
+-- *
+-- ERROR at line 1:
+-- ORA-00439: feature not enabled: Bit-mapped indexes
+--
+--
+-- SQL> DESCRIBE USER_INDEXES;
+--  Name                                                                                                                         Null?     Type
+--  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------- --------------------------------------------------------------------------------------------------------------------
+--  INDEX_NAME
+--       NOT NULL VARCHAR2(30)
+--  INDEX_TYPE                                                                                                            VARCHAR2(27)
+--  TABLE_OWNER
+--       NOT NULL VARCHAR2(30)
+--  TABLE_NAME
+--       NOT NULL VARCHAR2(30)
+--  TABLE_TYPE                                                                                                            VARCHAR2(11)
+--  UNIQUENESS                                                                                                            VARCHAR2(9)
+--  COMPRESSION                                                                                                           VARCHAR2(8)
+--  PREFIX_LENGTH                                                                                                         NUMBER
+--  TABLESPACE_NAME                                                                                                       VARCHAR2(30)
+--  INI_TRANS                                                                                                             NUMBER
+--  MAX_TRANS                                                                                                             NUMBER
+--  INITIAL_EXTENT                                                                                                        NUMBER
+--  NEXT_EXTENT                                                                                                           NUMBER
+--  MIN_EXTENTS                                                                                                           NUMBER
+--  MAX_EXTENTS                                                                                                           NUMBER
+--  PCT_INCREASE                                                                                                          NUMBER
+--  PCT_THRESHOLD                                                                                                         NUMBER
+--  INCLUDE_COLUMN                                                                                                        NUMBER
+--  FREELISTS                                                                                                             NUMBER
+--  FREELIST_GROUPS                                                                                                       NUMBER
+--  PCT_FREE                                                                                                              NUMBER
+--  LOGGING                                                                                                               VARCHAR2(3)
+--  BLEVEL                                                                                                                NUMBER
+--  LEAF_BLOCKS                                                                                                           NUMBER
+--  DISTINCT_KEYS                                                                                                         NUMBER
+--  AVG_LEAF_BLOCKS_PER_KEY                                                                                               NUMBER
+--  AVG_DATA_BLOCKS_PER_KEY                                                                                               NUMBER
+--  CLUSTERING_FACTOR                                                                                                     NUMBER
+--  STATUS                                                                                                                VARCHAR2(8)
+--  NUM_ROWS                                                                                                              NUMBER
+--  SAMPLE_SIZE                                                                                                           NUMBER
+--  LAST_ANALYZED                                                                                                         DATE
+--  DEGREE                                                                                                                VARCHAR2(40)
+--  INSTANCES                                                                                                             VARCHAR2(40)
+--  PARTITIONED                                                                                                           VARCHAR2(3)
+--  TEMPORARY                                                                                                             VARCHAR2(1)
+--  GENERATED                                                                                                             VARCHAR2(1)
+--  SECONDARY                                                                                                             VARCHAR2(1)
+--  BUFFER_POOL                                                                                                           VARCHAR2(7)
+--  FLASH_CACHE                                                                                                           VARCHAR2(7)
+--  CELL_FLASH_CACHE                                                                                                      VARCHAR2(7)
+--  USER_STATS                                                                                                            VARCHAR2(3)
+--  DURATION                                                                                                              VARCHAR2(15)
+--  PCT_DIRECT_ACCESS                                                                                                     NUMBER
+--  ITYP_OWNER                                                                                                            VARCHAR2(30)
+--  ITYP_NAME                                                                                                             VARCHAR2(30)
+--  PARAMETERS                                                                                                            VARCHAR2(1000)
+--  GLOBAL_STATS                                                                                                          VARCHAR2(3)
+--  DOMIDX_STATUS                                                                                                         VARCHAR2(12)
+--  DOMIDX_OPSTATUS                                                                                                       VARCHAR2(6)
+--  FUNCIDX_STATUS                                                                                                        VARCHAR2(8)
+--  JOIN_INDEX                                                                                                            VARCHAR2(3)
+--  IOT_REDUNDANT_PKEY_ELIM                                                                                               VARCHAR2(3)
+--  DROPPED                                                                                                               VARCHAR2(3)
+--  VISIBILITY                                                                                                            VARCHAR2(9)
+--  DOMIDX_MANAGEMENT                                                                                                     VARCHAR2(14)
+--  SEGMENT_CREATED                                                                                                       VARCHAR2(3)
+--
+-- SQL> SET LINESIZE 400;
+-- SQL> DESCRIBE USER_INDEXES;
+--  Name
+--   Null?    Type
+--  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------- ------------------------------------------------------------------------------------------------------------------------------------------------------------
+--  INDEX_NAME
+--   NOT NULL VARCHAR2(30)
+--  INDEX_TYPE
+--    VARCHAR2(27)
+--  TABLE_OWNER
+--   NOT NULL VARCHAR2(30)
+--  TABLE_NAME
+--   NOT NULL VARCHAR2(30)
+--  TABLE_TYPE
+--    VARCHAR2(11)
+--  UNIQUENESS
+--    VARCHAR2(9)
+--  COMPRESSION
+--    VARCHAR2(8)
+--  PREFIX_LENGTH
+--    NUMBER
+--  TABLESPACE_NAME
+--    VARCHAR2(30)
+--  INI_TRANS
+--    NUMBER
+--  MAX_TRANS
+--    NUMBER
+--  INITIAL_EXTENT
+--    NUMBER
+--  NEXT_EXTENT
+--    NUMBER
+--  MIN_EXTENTS
+--    NUMBER
+--  MAX_EXTENTS
+--    NUMBER
+--  PCT_INCREASE
+--    NUMBER
+--  PCT_THRESHOLD
+--    NUMBER
+--  INCLUDE_COLUMN
+--    NUMBER
+--  FREELISTS
+--    NUMBER
+--  FREELIST_GROUPS
+--    NUMBER
+--  PCT_FREE
+--    NUMBER
+--  LOGGING
+--    VARCHAR2(3)
+--  BLEVEL
+--    NUMBER
+--  LEAF_BLOCKS
+--    NUMBER
+--  DISTINCT_KEYS
+--    NUMBER
+--  AVG_LEAF_BLOCKS_PER_KEY
+--    NUMBER
+--  AVG_DATA_BLOCKS_PER_KEY
+--    NUMBER
+--  CLUSTERING_FACTOR
+--    NUMBER
+--  STATUS
+--    VARCHAR2(8)
+--  NUM_ROWS
+--    NUMBER
+--  SAMPLE_SIZE
+--    NUMBER
+--  LAST_ANALYZED
+--    DATE
+--  DEGREE
+--    VARCHAR2(40)
+--  INSTANCES
+--    VARCHAR2(40)
+--  PARTITIONED
+--    VARCHAR2(3)
+--  TEMPORARY
+--    VARCHAR2(1)
+--  GENERATED
+--    VARCHAR2(1)
+--  SECONDARY
+--    VARCHAR2(1)
+--  BUFFER_POOL
+--    VARCHAR2(7)
+--  FLASH_CACHE
+--    VARCHAR2(7)
+--  CELL_FLASH_CACHE
+--    VARCHAR2(7)
+--  USER_STATS
+--    VARCHAR2(3)
+--  DURATION
+--    VARCHAR2(15)
+--  PCT_DIRECT_ACCESS
+--    NUMBER
+--  ITYP_OWNER
+--    VARCHAR2(30)
+--  ITYP_NAME
+--    VARCHAR2(30)
+--  PARAMETERS
+--    VARCHAR2(1000)
+--  GLOBAL_STATS
+--    VARCHAR2(3)
+--  DOMIDX_STATUS
+--    VARCHAR2(12)
+--  DOMIDX_OPSTATUS
+--    VARCHAR2(6)
+--  FUNCIDX_STATUS
+--    VARCHAR2(8)
+--  JOIN_INDEX
+--    VARCHAR2(3)
+--  IOT_REDUNDANT_PKEY_ELIM
+--    VARCHAR2(3)
+--  DROPPED
+--    VARCHAR2(3)
+--  VISIBILITY
+--    VARCHAR2(9)
+--  DOMIDX_MANAGEMENT
+--    VARCHAR2(14)
+--  SEGMENT_CREATED
+--    VARCHAR2(3)
+--
+-- SQL> SET LINESIZE 200;
+-- SQL> DESCRIBE USER_INDEXES;
+--  Name                                                                                                              Null?    Type
+--  ----------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------
+--  INDEX_NAME                                                                                                        NOT NULL VARCHAR2(30)
+--  INDEX_TYPE
+--    VARCHAR2(27)
+--  TABLE_OWNER                                                                                                       NOT NULL VARCHAR2(30)
+--  TABLE_NAME                                                                                                        NOT NULL VARCHAR2(30)
+--  TABLE_TYPE
+--    VARCHAR2(11)
+--  UNIQUENESS
+--    VARCHAR2(9)
+--  COMPRESSION
+--    VARCHAR2(8)
+--  PREFIX_LENGTH
+--    NUMBER
+--  TABLESPACE_NAME
+--    VARCHAR2(30)
+--  INI_TRANS
+--    NUMBER
+--  MAX_TRANS
+--    NUMBER
+--  INITIAL_EXTENT
+--    NUMBER
+--  NEXT_EXTENT
+--    NUMBER
+--  MIN_EXTENTS
+--    NUMBER
+--  MAX_EXTENTS
+--    NUMBER
+--  PCT_INCREASE
+--    NUMBER
+--  PCT_THRESHOLD
+--    NUMBER
+--  INCLUDE_COLUMN
+--    NUMBER
+--  FREELISTS
+--    NUMBER
+--  FREELIST_GROUPS
+--    NUMBER
+--  PCT_FREE
+--    NUMBER
+--  LOGGING
+--    VARCHAR2(3)
+--  BLEVEL
+--    NUMBER
+--  LEAF_BLOCKS
+--    NUMBER
+--  DISTINCT_KEYS
+--    NUMBER
+--  AVG_LEAF_BLOCKS_PER_KEY
+--    NUMBER
+--  AVG_DATA_BLOCKS_PER_KEY
+--    NUMBER
+--  CLUSTERING_FACTOR
+--    NUMBER
+--  STATUS
+--    VARCHAR2(8)
+--  NUM_ROWS
+--    NUMBER
+--  SAMPLE_SIZE
+--    NUMBER
+--  LAST_ANALYZED
+--    DATE
+--  DEGREE
+--    VARCHAR2(40)
+--  INSTANCES
+--    VARCHAR2(40)
+--  PARTITIONED
+--    VARCHAR2(3)
+--  TEMPORARY
+--    VARCHAR2(1)
+--  GENERATED
+--    VARCHAR2(1)
+--  SECONDARY
+--    VARCHAR2(1)
+--  BUFFER_POOL
+--    VARCHAR2(7)
+--  FLASH_CACHE
+--    VARCHAR2(7)
+--  CELL_FLASH_CACHE
+--    VARCHAR2(7)
+--  USER_STATS
+--    VARCHAR2(3)
+--  DURATION
+--    VARCHAR2(15)
+--  PCT_DIRECT_ACCESS
+--    NUMBER
+--  ITYP_OWNER
+--    VARCHAR2(30)
+--  ITYP_NAME
+--    VARCHAR2(30)
+--  PARAMETERS
+--    VARCHAR2(1000)
+--  GLOBAL_STATS
+--    VARCHAR2(3)
+--  DOMIDX_STATUS
+--    VARCHAR2(12)
+--  DOMIDX_OPSTATUS
+--    VARCHAR2(6)
+--  FUNCIDX_STATUS
+--    VARCHAR2(8)
+--  JOIN_INDEX
+--    VARCHAR2(3)
+--  IOT_REDUNDANT_PKEY_ELIM
+--    VARCHAR2(3)
+--  DROPPED
+--    VARCHAR2(3)
+--  VISIBILITY
+--    VARCHAR2(9)
+--  DOMIDX_MANAGEMENT
+--    VARCHAR2(14)
+--  SEGMENT_CREATED
+--    VARCHAR2(3)
+--
+-- SQL> SET LINESIZE 300;
+-- SQL> DESCRIBE USER_INDEXES;
+--  Name
+--       Null?     Type
+--  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------- --------------------------------------------------------------------------------------------------------------------
+--  INDEX_NAME
+--       NOT NULL VARCHAR2(30)
+--  INDEX_TYPE                                                                                                            VARCHAR2(27)
+--  TABLE_OWNER
+--       NOT NULL VARCHAR2(30)
+--  TABLE_NAME
+--       NOT NULL VARCHAR2(30)
+--  TABLE_TYPE                                                                                                            VARCHAR2(11)
+--  UNIQUENESS                                                                                                            VARCHAR2(9)
+--  COMPRESSION                                                                                                           VARCHAR2(8)
+--  PREFIX_LENGTH                                                                                                         NUMBER
+--  TABLESPACE_NAME                                                                                                       VARCHAR2(30)
+--  INI_TRANS                                                                                                             NUMBER
+--  MAX_TRANS                                                                                                             NUMBER
+--  INITIAL_EXTENT                                                                                                        NUMBER
+--  NEXT_EXTENT                                                                                                           NUMBER
+--  MIN_EXTENTS                                                                                                           NUMBER
+--  MAX_EXTENTS                                                                                                           NUMBER
+--  PCT_INCREASE                                                                                                          NUMBER
+--  PCT_THRESHOLD                                                                                                         NUMBER
+--  INCLUDE_COLUMN                                                                                                        NUMBER
+--  FREELISTS                                                                                                             NUMBER
+--  FREELIST_GROUPS                                                                                                       NUMBER
+--  PCT_FREE                                                                                                              NUMBER
+--  LOGGING                                                                                                               VARCHAR2(3)
+--  BLEVEL                                                                                                                NUMBER
+--  LEAF_BLOCKS                                                                                                           NUMBER
+--  DISTINCT_KEYS                                                                                                         NUMBER
+--  AVG_LEAF_BLOCKS_PER_KEY                                                                                               NUMBER
+--  AVG_DATA_BLOCKS_PER_KEY                                                                                               NUMBER
+--  CLUSTERING_FACTOR                                                                                                     NUMBER
+--  STATUS                                                                                                                VARCHAR2(8)
+--  NUM_ROWS                                                                                                              NUMBER
+--  SAMPLE_SIZE                                                                                                           NUMBER
+--  LAST_ANALYZED                                                                                                         DATE
+--  DEGREE                                                                                                                VARCHAR2(40)
+--  INSTANCES                                                                                                             VARCHAR2(40)
+--  PARTITIONED                                                                                                           VARCHAR2(3)
+--  TEMPORARY                                                                                                             VARCHAR2(1)
+--  GENERATED                                                                                                             VARCHAR2(1)
+--  SECONDARY                                                                                                             VARCHAR2(1)
+--  BUFFER_POOL                                                                                                           VARCHAR2(7)
+--  FLASH_CACHE                                                                                                           VARCHAR2(7)
+--  CELL_FLASH_CACHE                                                                                                      VARCHAR2(7)
+--  USER_STATS                                                                                                            VARCHAR2(3)
+--  DURATION                                                                                                              VARCHAR2(15)
+--  PCT_DIRECT_ACCESS                                                                                                     NUMBER
+--  ITYP_OWNER                                                                                                            VARCHAR2(30)
+--  ITYP_NAME                                                                                                             VARCHAR2(30)
+--  PARAMETERS                                                                                                            VARCHAR2(1000)
+--  GLOBAL_STATS                                                                                                          VARCHAR2(3)
+--  DOMIDX_STATUS                                                                                                         VARCHAR2(12)
+--  DOMIDX_OPSTATUS                                                                                                       VARCHAR2(6)
+--  FUNCIDX_STATUS                                                                                                        VARCHAR2(8)
+--  JOIN_INDEX                                                                                                            VARCHAR2(3)
+--  IOT_REDUNDANT_PKEY_ELIM                                                                                               VARCHAR2(3)
+--  DROPPED                                                                                                               VARCHAR2(3)
+--  VISIBILITY                                                                                                            VARCHAR2(9)
+--  DOMIDX_MANAGEMENT                                                                                                     VARCHAR2(14)
+--  SEGMENT_CREATED                                                                                                       VARCHAR2(3)
+--
+-- SQL> SET AUTOTRACE OFF;
+
+SELECT INDEX_NAME, INDEX_TYPE
+FROM USER_INDEXES;
+
+CREATE BITMAP INDEX E2 ON EMP (DEPTNO);

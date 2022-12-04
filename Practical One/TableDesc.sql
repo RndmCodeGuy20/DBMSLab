@@ -1,0 +1,12 @@
+SELECT TABLE_NAME, CONSTRAINT_NAME, CONSTRAINT_TYPE
+FROM USER_CONSTRAINTS
+WHERE TABLE_NAME IN ('COURSE', 'PARTICIPANT');
+
+-- • 'C' represent a CHECK or a NOT NULL constraints
+-- • 'P' represent a PRIMARY KEY constraint
+-- • 'R' represent a FOREIGN KEY constraint
+-- • 'U' represent a UNIQUE constraint
+
+-- VIEW ALL TABLES IN THE CURRENT TABLESPACE
+SELECT *
+FROM TAB;

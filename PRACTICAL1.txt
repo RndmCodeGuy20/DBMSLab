@@ -1,0 +1,240 @@
+SQL> SELECT * FROM COURSE;
+
+       CID CNAME                                CREDIT                          
+---------- -------------------------------- ----------                          
+       101 DATA STRUCTURES                           3                          
+       102 ALGORITHMS                                4                          
+       103 DATABASE                                  4                          
+       104 NETWORKING                                3                          
+       105 PYTHON                                    2                          
+
+SQL> COMMIT
+  2  ;
+
+Commit complete.
+
+SQL> DESC PARTICPANT;
+ERROR:
+ORA-04043: object PARTICPANT does not exist 
+
+
+SQL> DESC PARTICIPANT;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ PID                                       NOT NULL NUMBER(4)
+ PNAME                                     NOT NULL VARCHAR2(32)
+ GENDER                                    NOT NULL CHAR(1)
+ CID                                                NUMBER(3)
+
+SQL> INSERT INTO PARTICIPANT VALUES(1001, 'SHANTANU', 'M', 101);
+
+1 row created.
+
+SQL> SELECT * FROM PARTICIPANT;
+
+       PID PNAME                            G        CID                        
+---------- -------------------------------- - ----------                        
+      1001 SHANTANU                         M        101                        
+
+SQL> INSERT INTO PARTICIPANT VALUES(1002, 'DEXTER', 'M', 104);
+
+1 row created.
+
+SQL> SELECT * FROM PARTICIPANT;
+
+       PID PNAME                            G        CID                        
+---------- -------------------------------- - ----------                        
+      1001 SHANTANU                         M        101                        
+      1002 DEXTER                           M        104                        
+
+SQL> INSERT INTO PARTICIPANT VALUES(1001, 'DEBRA', 'F', 103);
+INSERT INTO PARTICIPANT VALUES(1001, 'DEBRA', 'F', 103)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (SHAN.PARTICIPANT_PK_PID) violated 
+
+
+SQL> INSERT INTO PARTICIPANT VALUES(1003, 'DEBRA', 'F', 103);
+
+1 row created.
+
+SQL> SELECT * FROM PARTICIPANT;
+
+       PID PNAME                            G        CID                        
+---------- -------------------------------- - ----------                        
+      1001 SHANTANU                         M        101                        
+      1002 DEXTER                           M        104                        
+      1003 DEBRA                            F        103                        
+
+SQL> INSERT INTO PARTICIPANT VALUES(1002, 'DEXTER', 'M', 105);
+INSERT INTO PARTICIPANT VALUES(1002, 'DEXTER', 'M', 105)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (SHAN.PARTICIPANT_PK_PID) violated 
+
+
+SQL> INSERT INTO PARTICIPANT VALUES(1004, 'DEXTER', 'M', 105);
+
+1 row created.
+
+SQL> SELECT * FROM PARTICIPANT;
+
+       PID PNAME                            G        CID                        
+---------- -------------------------------- - ----------                        
+      1001 SHANTANU                         M        101                        
+      1002 DEXTER                           M        104                        
+      1003 DEBRA                            F        103                        
+      1004 DEXTER                           M        105                        
+
+SQL> INSERT INTO PARTICIPANT VALUES(1005, 'HARRISON', 'M', NULL);
+
+1 row created.
+
+SQL> SELECT * FROM PARTICIPANT;
+
+       PID PNAME                            G        CID                        
+---------- -------------------------------- - ----------                        
+      1001 SHANTANU                         M        101                        
+      1002 DEXTER                           M        104                        
+      1003 DEBRA                            F        103                        
+      1004 DEXTER                           M        105                        
+      1005 HARRISON                         M                                   
+
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> DESC USER_CONSTRAINTS;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ OWNER                                              VARCHAR2(120)
+ CONSTRAINT_NAME                           NOT NULL VARCHAR2(30)
+ CONSTRAINT_TYPE                                    VARCHAR2(1)
+ TABLE_NAME                                NOT NULL VARCHAR2(30)
+ SEARCH_CONDITION                                   LONG
+ R_OWNER                                            VARCHAR2(120)
+ R_CONSTRAINT_NAME                                  VARCHAR2(30)
+ DELETE_RULE                                        VARCHAR2(9)
+ STATUS                                             VARCHAR2(8)
+ DEFERRABLE                                         VARCHAR2(14)
+ DEFERRED                                           VARCHAR2(9)
+ VALIDATED                                          VARCHAR2(13)
+ GENERATED                                          VARCHAR2(14)
+ BAD                                                VARCHAR2(3)
+ RELY                                               VARCHAR2(4)
+ LAST_CHANGE                                        DATE
+ INDEX_OWNER                                        VARCHAR2(30)
+ INDEX_NAME                                         VARCHAR2(30)
+ INVALID                                            VARCHAR2(7)
+ VIEW_RELATED                                       VARCHAR2(14)
+
+SQL> SELECT TABLE_NAME, CONSTRAINT_NAME, CONSTRAINT_TYPE FROM USER_CONSTRAINTS WHERE TABLE_NAME IN ('PARTICIPANT', 'COURSE');
+
+TABLE_NAME                     CONSTRAINT_NAME                C                 
+------------------------------ ------------------------------ -                 
+COURSE                         SYS_C007084                    C                 
+COURSE                         SYS_C007085                    C                 
+COURSE                         COURSE_CK_CID                  C                 
+COURSE                         COURSE_CK_CREDIT               C                 
+COURSE                         COURSE_PK_CID                  P                 
+COURSE                         COURSE_UQ_CNAME                U                 
+PARTICIPANT                    SYS_C007090                    C                 
+PARTICIPANT                    SYS_C007091                    C                 
+PARTICIPANT                    SYS_C007092                    C                 
+PARTICIPANT                    PARTICIPANT_CK_PID             C                 
+PARTICIPANT                    PARTICIPANT_CK_GENDER          C                 
+
+TABLE_NAME                     CONSTRAINT_NAME                C                 
+------------------------------ ------------------------------ -                 
+PARTICIPANT                    PARTICIPANT_PK_PID             P                 
+PARTICIPANT                    PARTICIPANT_FK_CID             R                 
+
+13 rows selected.
+
+SQL> SELECT TABLE_NAME, CONSTRAINT_NAME, CONSTRAINT_TYPE FROM USER_CONSTRAINTS WHERE TABLE_NAME='PARTICIPANT';
+
+TABLE_NAME                     CONSTRAINT_NAME                C                 
+------------------------------ ------------------------------ -                 
+PARTICIPANT                    SYS_C007090                    C                 
+PARTICIPANT                    SYS_C007091                    C                 
+PARTICIPANT                    SYS_C007092                    C                 
+PARTICIPANT                    PARTICIPANT_CK_PID             C                 
+PARTICIPANT                    PARTICIPANT_CK_GENDER          C                 
+PARTICIPANT                    PARTICIPANT_PK_PID             P                 
+PARTICIPANT                    PARTICIPANT_FK_CID             R                 
+
+7 rows selected.
+
+SQL> SELECT TABLE_NAME, CONSTRAINT_NAME, CONSTRAINT_TYPE FROM USER_CONSTRAINTS WHERE TABLE_NAME='COURSE';
+
+TABLE_NAME                     CONSTRAINT_NAME                C                 
+------------------------------ ------------------------------ -                 
+COURSE                         SYS_C007084                    C                 
+COURSE                         SYS_C007085                    C                 
+COURSE                         COURSE_CK_CID                  C                 
+COURSE                         COURSE_CK_CREDIT               C                 
+COURSE                         COURSE_PK_CID                  P                 
+COURSE                         COURSE_UQ_CNAME                U                 
+
+6 rows selected.
+
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> UPDATE COURSE
+  2  SET CREDIT=4,
+  3  WHERE CNAME='DATABASE';
+WHERE CNAME='DATABASE'
+*
+ERROR at line 3:
+ORA-01747: invalid user.table.column, table.column, or column specification 
+
+
+SQL> SELECT * FROM COURSE;
+
+       CID CNAME                                CREDIT                          
+---------- -------------------------------- ----------                          
+       101 DATA STRUCTURES                           3                          
+       102 ALGORITHMS                                4                          
+       103 DATABASE                                  4                          
+       104 NETWORKING                                3                          
+       105 PYTHON                                    2                          
+
+SQL> UPDATE COURSE
+  2  SET CREDIT=3,
+  3  WHERE CNAME='DATABASE';
+WHERE CNAME='DATABASE'
+*
+ERROR at line 3:
+ORA-01747: invalid user.table.column, table.column, or column specification 
+
+
+SQL> UPDATE COURSE
+  2  SET CREDIT=4,
+  3  WHERE CID=103;
+WHERE CID=103
+*
+ERROR at line 3:
+ORA-01747: invalid user.table.column, table.column, or column specification 
+
+
+SQL> UPDATE COURSE
+  2  SET CREDIT=4
+  3  WHERE CID=103;
+
+1 row updated.
+
+SQL> SELECT * FROM COURSE;
+
+       CID CNAME                                CREDIT                          
+---------- -------------------------------- ----------                          
+       101 DATA STRUCTURES                           3                          
+       102 ALGORITHMS                                4                          
+       103 DATABASE                                  4                          
+       104 NETWORKING                                3                          
+       105 PYTHON                                    2                          
+
+SQL> UPDATE COURSE
+  2  SET CREDIT=3,
+  3  
