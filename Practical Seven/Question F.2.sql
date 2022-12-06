@@ -1,6 +1,6 @@
 -- Q2. Create a function that takes deptno as argument and return the count of no. of employees working in that department.(scott/tiger schema)
 
-CREATE FUNCTION RET_COUNT_EMP(DEPT_NUM IN NUMBER)
+CREATE OR REPLACE FUNCTION RET_COUNT_EMP(DEPT_NUM IN NUMBER)
     RETURN NUMBER
 AS
     V_COUNT NUMBER;

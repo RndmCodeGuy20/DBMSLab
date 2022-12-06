@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta
-			name="viewport"
-			content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
-		/>
-		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
-		<style>
+<head>
+    <meta charset="UTF-8"/>
+    <meta
+            name="viewport"
+            content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <style>
 			h1,
 			h2,
 			h3 {
@@ -34,7 +34,7 @@
 				border-radius: 2px;
 			}
 
-			body {
+			html {
 				color: black;
 				padding: 30px 100px;
 				background-color: #ffffff;
@@ -96,34 +96,36 @@
 			.hljs-number {
 				color: #e5c07b;
 			}
-		</style>
-		<title>5</title>
-	</head>
-	<body>
-		<center>
-			<h1>
-				Shri Ramdeobaba College of Engineering and Management<br />Nagpur
-				4400013
-			</h1>
-		</center>
-		<center>
-			<h1>Department of Computer Science Engineering (AIML)</h1>
-		</center>
-		<center><h2>Database Management Lab - Practical 5</h2></center>
 
-		<hr />
-		<div class="text aim">
-			Aim : To study the syntax of Procedural Language - SQL and the basic
-			keywords in it. ️
-		</div>
 
-		<hr />
-		<h3 id="pl-sql-questions-easy-">PL-SQL Questions [EASY]</h3>
-		<div class="text">
-			Q1. Write a PL-SQL block to find greatest among three given numbers.
-		</div>
+    </style>
+    <title>5</title>
+</head>
+<body>
+<center>
+    <h1>
+        Shri Ramdeobaba College of Engineering and Management<br/>Nagpur
+        4400013
+    </h1>
+</center>
+<center>
+    <h1>Department of Computer Science Engineering (AIML)</h1>
+</center>
+<center><h2>Database Management Lab - Practical 5</h2></center>
 
-		<pre><code class="lang-sql"><span class="hljs-keyword">DECLARE</span>
+<hr/>
+<div class="text aim">
+    Aim : To study the syntax of Procedural Language - SQL and the basic
+    keywords in it. ️
+</div>
+
+<hr/>
+<h3 id="pl-sql-questions-easy-">PL-SQL Questions [EASY]</h3>
+<div class="text">
+    Q1. Write a PL-SQL block to find greatest among three given numbers.
+</div>
+
+<pre><code class="lang-sql"><span class="hljs-keyword">DECLARE</span>
     V_NUM_1   NUMBER := &amp;V_NUM_1;
     V_NUM_2   NUMBER := &amp;V_NUM_2;
     V_NUM_3   NUMBER := &amp;V_NUM_3;
@@ -144,19 +146,19 @@
             class="hljs-type">V_MAX_NUM</span>);
 <span class="hljs-keyword">END</span>;
 </code></pre>
-		<pre><code class="lang-text">ENTER VALUE <span class="hljs-keyword">FOR</span> V_NUM_1 : 23;
+<pre><code class="lang-text">ENTER VALUE <span class="hljs-keyword">FOR</span> V_NUM_1 : 23;
 ENTER VALUE <span class="hljs-keyword">FOR</span> V_NUM_2 : 45;
 ENTER VALUE <span class="hljs-keyword">FOR</span> V_NUM_3 : 0;
 
 MAXIMUM NUMBER : 45
 </code></pre>
-		<div class="text">
-			Q2. Write a PL-SQL block to find out if a year is a leap year.(A
-			leap year is divisible by 4 but not by 100,or it is divisible by
-			400)
-		</div>
+<div class="text">
+    Q2. Write a PL-SQL block to find out if a year is a leap year.(A
+    leap year is divisible by 4 but not by 100,or it is divisible by
+    400)
+</div>
 
-		<pre><code class="lang-sql"><span class="hljs-keyword">DECLARE</span>
+<pre><code class="lang-sql"><span class="hljs-keyword">DECLARE</span>
     V_DATE_INP NUMBER := &amp;V_DATE_INP;
 <span class="hljs-keyword">BEGIN</span>
     <span class="hljs-keyword">IF</span> ((<span class="hljs-keyword">MOD</span>(V_DATE_INP, <span
@@ -174,7 +176,7 @@ MAXIMUM NUMBER : 45
     <span class="hljs-keyword">END</span> <span class="hljs-keyword">IF</span>;
 <span class="hljs-keyword">END</span>;
 </code></pre>
-		<pre><code class="lang-text">ENTER VALUE <span class="hljs-keyword">FOR</span> V_DATE_INP : <span class="hljs-number">2003</span>
+<pre><code class="lang-text">ENTER VALUE <span class="hljs-keyword">FOR</span> V_DATE_INP : <span class="hljs-number">2003</span>
 THE GIVEN <span class="hljs-built_in">YEAR</span> : <span class="hljs-number">2003</span> <span
             class="hljs-keyword">IS</span> <span class="hljs-keyword">NOT</span> A LEAP <span
             class="hljs-built_in">YEAR</span>
@@ -183,12 +185,12 @@ ENTER VALUE <span class="hljs-keyword">FOR</span> V_DATE_INP : <span class="hljs
 THE GIVEN <span class="hljs-built_in">YEAR</span> : <span class="hljs-number">2002</span> <span
             class="hljs-keyword">IS</span> A LEAP <span class="hljs-built_in">YEAR</span>
 </code></pre>
-		<div class="text">
-			Q3. Input a number with a substitution variable, and then print its
-			multiplication table using a While loop.
-		</div>
+<div class="text">
+    Q3. Input a number with a substitution variable, and then print its
+    multiplication table using a While loop.
+</div>
 
-		<pre><code class="lang-sql"><span class="hljs-keyword">DECLARE</span>
+<pre><code class="lang-sql"><span class="hljs-keyword">DECLARE</span>
     V_NUM     <span class="hljs-built_in">NUMBER</span>  := &amp;V_NUM;
     V_COUNTER INTEGER := 1;
 <span class="hljs-keyword">BEGIN</span>
@@ -200,7 +202,7 @@ THE GIVEN <span class="hljs-built_in">YEAR</span> : <span class="hljs-number">20
         <span class="hljs-keyword">END</span> <span class="hljs-keyword">LOOP</span>;
 <span class="hljs-keyword">END</span>;
 </code></pre>
-		<pre><code class="lang-text">ENTER VALUE <span class="hljs-keyword">FOR</span> V_NUM : <span
+<pre><code class="lang-text">ENTER VALUE <span class="hljs-keyword">FOR</span> V_NUM : <span
         class="hljs-number">5</span>
 <span class="hljs-number">5</span> <span class="hljs-keyword">X</span> <span class="hljs-number">1</span> = <span
             class="hljs-number">5</span>
@@ -223,12 +225,12 @@ THE GIVEN <span class="hljs-built_in">YEAR</span> : <span class="hljs-number">20
 <span class="hljs-number">5</span> <span class="hljs-keyword">X</span> <span class="hljs-number">10</span> = <span
             class="hljs-number">50</span>
 </code></pre>
-		<div class="text">
-			Q4. Write a PL-SQL block to print all odd numbers between 1 and 10
-			using a basic loop.
-		</div>
+<div class="text">
+    Q4. Write a PL-SQL block to print all odd numbers between 1 and 10
+    using a basic loop.
+</div>
 
-		<pre><code class="lang-sql"><span class="hljs-keyword">DECLARE</span>
+<pre><code class="lang-sql"><span class="hljs-keyword">DECLARE</span>
     V_NUM <span class="hljs-built_in">integer</span> := <span class="hljs-number">1</span>;
 
 <span class="hljs-keyword">BEGIN</span>
@@ -243,17 +245,17 @@ THE GIVEN <span class="hljs-built_in">YEAR</span> : <span class="hljs-number">20
     <span class="hljs-keyword">END</span> <span class="hljs-keyword">LOOP</span>;
 <span class="hljs-keyword">END</span>;
 </code></pre>
-		<pre><code class="lang-text"><span class="hljs-number">1</span>
+<pre><code class="lang-text"><span class="hljs-number">1</span>
 <span class="hljs-number">3</span>
 <span class="hljs-number">5</span>
 <span class="hljs-number">7</span>
 <span class="hljs-number">9</span>
 </code></pre>
-		<div class="text">
-			Q5. Using a for loop, print the value 10 to 1 in reverse order.
-		</div>
+<div class="text">
+    Q5. Using a for loop, print the value 10 to 1 in reverse order.
+</div>
 
-		<pre><code class="lang-sql"><span class="hljs-keyword">BEGIN</span>
+<pre><code class="lang-sql"><span class="hljs-keyword">BEGIN</span>
     <span class="hljs-keyword">For</span> V_NUM <span class="hljs-keyword">IN</span> <span
             class="hljs-keyword">REVERSE</span> <span class="hljs-number">1.</span><span class="hljs-number">.10</span>
         <span class="hljs-keyword">LOOP</span>
@@ -261,7 +263,7 @@ THE GIVEN <span class="hljs-built_in">YEAR</span> : <span class="hljs-number">20
         <span class="hljs-keyword">END</span> <span class="hljs-keyword">LOOP</span>;
 <span class="hljs-keyword">END</span>;
 </code></pre>
-		<pre><code class="lang-text"><span class="hljs-number">10</span>
+<pre><code class="lang-text"><span class="hljs-number">10</span>
 <span class="hljs-number">9</span>
 <span class="hljs-number">8</span>
 <span class="hljs-number">7</span>
@@ -272,12 +274,12 @@ THE GIVEN <span class="hljs-built_in">YEAR</span> : <span class="hljs-number">20
 <span class="hljs-number">2</span>
 <span class="hljs-number">1</span>
 </code></pre>
-		<div class="text">
-			Q6. Write a PL-SQL program to swap the values of two variables.
-			Print the variables before and after swapping.
-		</div>
+<div class="text">
+    Q6. Write a PL-SQL program to swap the values of two variables.
+    Print the variables before and after swapping.
+</div>
 
-		<pre><code class="lang-sql">DECLARE
+<pre><code class="lang-sql">DECLARE
     V_NUM_1 NUMBER := &amp;V_NUM_1<span class="hljs-comment">;</span>
     V_NUM2  NUMBER := &amp;V_NUM_2<span class="hljs-comment">;</span>
     V_TEMP  NUMBER<span class="hljs-comment">;</span>
@@ -290,21 +292,21 @@ THE GIVEN <span class="hljs-built_in">YEAR</span> : <span class="hljs-number">20
             class="hljs-comment">;</span>
 END<span class="hljs-comment">;</span>
 </code></pre>
-		<pre><code class="lang-text">ENTER VALUE <span class="hljs-keyword">FOR</span> V_NUM_1 : 63
+<pre><code class="lang-text">ENTER VALUE <span class="hljs-keyword">FOR</span> V_NUM_1 : 63
 ENTER VALUE <span class="hljs-keyword">FOR</span> V_NUM_2 : 20
 
 SWAPPED NUMBERS : 20 63
 </code></pre>
-		<h3 id="pl-sql-questions-scott-tiger-">
-			PL-SQL Questions [SCOTT-TIGER]
-		</h3>
-		<div class="text">
-			Q1.An employee no. is entered from keyboard, Write a PL-SQL program
-			to find empno, ename, deptno, sal from emp table. Raise suitable
-			exception, if employee no does not exist.
-		</div>
+<h3 id="pl-sql-questions-scott-tiger-">
+    PL-SQL Questions [SCOTT-TIGER]
+</h3>
+<div class="text">
+    Q1.An employee no. is entered from keyboard, Write a PL-SQL program
+    to find empno, ename, deptno, sal from emp table. Raise suitable
+    exception, if employee no does not exist.
+</div>
 
-		<pre><code class="lang-sql"><span class="hljs-keyword">DECLARE</span>
+<pre><code class="lang-sql"><span class="hljs-keyword">DECLARE</span>
     V_EMP_ID       NUMBER := &amp;V_EMP_ID;
     V_EMP_NAME     VARCHAR2(<span class="hljs-number">20</span>);
     V_EMP_DEPT_NUM NUMBER;
@@ -328,7 +330,7 @@ SWAPPED NUMBERS : 20 63
             class="hljs-type">V_EMP_ID</span>);
 <span class="hljs-keyword">END</span>;
 </code></pre>
-		<pre><code class="lang-text">ENTER VALUE <span class="hljs-keyword">FOR</span> V_EMP_ID : 7839
+<pre><code class="lang-text">ENTER VALUE <span class="hljs-keyword">FOR</span> V_EMP_ID : 7839
 EMPLOYEE ID : 7839
 EMPLOYEE NAME : <span class="hljs-type">KING</span>
 EMPLOYEE DEPARTMENT NO. : 10
@@ -337,18 +339,18 @@ EMPLOYEE SALARY : 5000
 ENTER VALUE <span class="hljs-keyword">FOR</span> V_EMP_ID : 2000
 NO EMPLOYEE FOUND <span class="hljs-keyword">WITH</span> ID : 2000
 </code></pre>
-		<div class="text">
-			Q2. An employee no. is entered from keyboard; Write a PL-SQL program
-			to find grade of an employee in emp relation based on employee
-			salary. <br />
-			If sal&gt;3000$ then grade is A <br />
-			If sal&gt;2000$ then grade is B <br />
-			If sal&gt;1000$ then grade is C <br />
-			Otherwise grade is D <br />
-			Raise suitable exception, if employee name does not exist.
-		</div>
+<div class="text">
+    Q2. An employee no. is entered from keyboard; Write a PL-SQL program
+    to find grade of an employee in emp relation based on employee
+    salary. <br/>
+    If sal&gt;3000$ then grade is A <br/>
+    If sal&gt;2000$ then grade is B <br/>
+    If sal&gt;1000$ then grade is C <br/>
+    Otherwise grade is D <br/>
+    Raise suitable exception, if employee name does not exist.
+</div>
 
-		<pre><code class="lang-sql"><span class="hljs-keyword">DECLARE</span>
+<pre><code class="lang-sql"><span class="hljs-keyword">DECLARE</span>
     V_EMP_ID       NUMBER := &amp;V_EMP_ID;
     V_EMP_NAME     VARCHAR2(<span class="hljs-number">20</span>);
     V_EMP_DEPT_NUM NUMBER;
@@ -372,18 +374,18 @@ NO EMPLOYEE FOUND <span class="hljs-keyword">WITH</span> ID : 2000
             class="hljs-type">V_EMP_ID</span>);
 <span class="hljs-keyword">END</span>;
 </code></pre>
-		<pre><code class="lang-text">ENTER VALUE <span class="hljs-keyword">FOR</span> V_EMP_ID : 7839
+<pre><code class="lang-text">ENTER VALUE <span class="hljs-keyword">FOR</span> V_EMP_ID : 7839
 GRADE : <span class="hljs-type">A</span>
 
 ENTER VALUE <span class="hljs-keyword">FOR</span> V_EMP_ID : 2000
 NO EMPLOYEE FOUND <span class="hljs-keyword">WITH</span> ID : 2000
 </code></pre>
-		<div class="text">
-			Q3. Write a PL_SQL program to compute employee name with fourth
-			largest salary.
-		</div>
+<div class="text">
+    Q3. Write a PL_SQL program to compute employee name with fourth
+    largest salary.
+</div>
 
-		<pre><code class="lang-sql"><span class="hljs-keyword">DECLARE</span>
+<pre><code class="lang-sql"><span class="hljs-keyword">DECLARE</span>
     V_ENAME emp.ename%<span class="hljs-keyword">TYPE</span>;
     V_SAL   emp.sal%TYPE;
 <span class="hljs-keyword">BEGIN</span>
@@ -403,16 +405,16 @@ EXCEPTION
         DBMS_OUTPUT.PUT_LINE('NO EMPLOYEE FOUND WITH NAME : ' || V_ENAME);
 <span class="hljs-keyword">END</span>;
 </code></pre>
-		<pre><code class="lang-text">BLAKE HAS <span class="hljs-number">4</span>TH LARGEST SALARY : 2850
+<pre><code class="lang-text">BLAKE HAS <span class="hljs-number">4</span>TH LARGEST SALARY : 2850
 </code></pre>
-		<div class="text">
-			Q5. Write a PL-SQL block to ask a user to input a employee
-			Id.Retrieve the employee’s name, Sal and commission. Print the name
-			and sum of salary and commission. Also write exception, if employee
-			Id is invalid.
-		</div>
+<div class="text">
+    Q5. Write a PL-SQL block to ask a user to input a employee
+    Id.Retrieve the employee’s name, Sal and commission. Print the name
+    and sum of salary and commission. Also write exception, if employee
+    Id is invalid.
+</div>
 
-		<pre><code class="lang-sql"><span class="hljs-keyword">DECLARE</span>
+<pre><code class="lang-sql"><span class="hljs-keyword">DECLARE</span>
     V_EMP_ID       NUMBER := &amp;V_EMP_ID;
     V_EMP_NAME     VARCHAR2(<span class="hljs-number">20</span>);
     V_EMP_DEPT_NUM NUMBER;
@@ -438,19 +440,19 @@ EXCEPTION
             class="hljs-type">V_EMP_ID</span>);
 <span class="hljs-keyword">END</span>;
 </code></pre>
-		<pre><code class="lang-text">ENTER VALUE <span class="hljs-keyword">FOR</span> V_EMP_ID : 7499
+<pre><code class="lang-text">ENTER VALUE <span class="hljs-keyword">FOR</span> V_EMP_ID : 7499
 EMPLOYEE ID : 7499
 EMPLOYEE NAME : <span class="hljs-type">ALLEN</span>
 EMPLOYEE DEPARTMENT NO. : 30
 EMPLOYEE SALARY : 1600
 TOTAL EMPLOYEE SALARY : 1900
 </code></pre>
-		<div class="text">
-			Q6. Write PL-SQL program to compute the highest salary in the EMP
-			table, also print the name of Employee earning highest salary
-		</div>
+<div class="text">
+    Q6. Write PL-SQL program to compute the highest salary in the EMP
+    table, also print the name of Employee earning highest salary
+</div>
 
-		<pre><code class="lang-sql"><span class="hljs-keyword">DECLARE</span>
+<pre><code class="lang-sql"><span class="hljs-keyword">DECLARE</span>
     V_EMP_ID       NUMBER;
     V_EMP_NAME     VARCHAR2(<span class="hljs-number">20</span>);
     V_EMP_DEPT_NUM NUMBER;
@@ -476,11 +478,11 @@ TOTAL EMPLOYEE SALARY : 1900
             class="hljs-type">V_EMP_ID</span>);
 <span class="hljs-keyword">END</span>;
 </code></pre>
-		<pre><code class="lang-text">EMPLOYEE ID : 7839
+<pre><code class="lang-text">EMPLOYEE ID : 7839
 EMPLOYEE NAME : <span class="hljs-type">KING</span>
 EMPLOYEE DEPARTMENT NO. : 10
 EMPLOYEE SALARY : 5000
 TOTAL EMPLOYEE SALARY : 5000
 </code></pre>
-	</body>
+</body>
 </html>
