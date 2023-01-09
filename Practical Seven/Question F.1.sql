@@ -2,12 +2,12 @@
 
 CREATE OR REPLACE FUNCTION RET_AGE(DOB IN DATE)
     RETURN NUMBER
-    IS
+aS
     AGE NUMBER;
 BEGIN
     SELECT MONTHS_BETWEEN(TRUNC(sysdate),
                           TO_DATE(DOB)
-               ) / 365
+               ) / 12
     INTO AGE
     FROM DUAL;
 
@@ -16,7 +16,7 @@ END RET_AGE;
 
 DECLARE
     RES NUMBER;
-    DOB DATE := SYSDATE;
+    DOB DATE := DATE'2002-03-20';
 BEGIN
     RES := SHAN.RET_AGE(DOB => DOB);
     DBMS_OUTPUT.PUT_LINE('AGE OF EMPLOYEE : ' || RES);
